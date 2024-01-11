@@ -17,13 +17,14 @@
     <springboot.version>3.2.1</springboot.version>
 
     <!-- add-opens -->
-    <argsLine>
+    <argLine>
       --add-opens=java.base/java.util=ALL-UNNAMED
       --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
       --add-opens=java.base/java.lang=ALL-UNNAMED
+      --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
       --add-opens=java.base/java.time=ALL-UNNAMED
-    </argsLine>
-    <manifest.add-opens>java.base/java.util java.base/java.util.concurrent java.base/java.lang java.base/java.time</manifest.add-opens>
+    </argLine>
+    <manifest.add-opens>java.base/java.util java.base/java.util.concurrent java.base/java.lang java.base/java.lang.reflect java.base/java.time</manifest.add-opens>
   </properties>
 
   <dependencyManagement>
@@ -126,7 +127,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
-          <argLine>${argsLine}</argLine>
+          <argLine>${argLine}</argLine>
         </configuration>
       </plugin>
 
