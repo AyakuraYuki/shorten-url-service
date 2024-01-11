@@ -1,7 +1,6 @@
 package cc.ayakurayuki.shortenurl.infrastructure.config;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
+import cc.ayakurayuki.extension.pool.ThreadPoolsFactory;
 import org.redisson.config.Config;
 import org.redisson.spring.starter.RedissonAutoConfigurationCustomizer;
 import org.springframework.context.annotation.Configuration;
@@ -16,10 +15,7 @@ public class RedissonConfig implements RedissonAutoConfigurationCustomizer {
   @Override
   public void customize(Config configuration) {
     // 利用协程
-    ThreadFactory factory = Thread.ofVirtual()
-        .name("redisson-thread")
-        .factory();
-    configuration.setExecutor(Executors.newThreadPerTaskExecutor(factory));
+    configuration.setExecutor(ThreadPoolsFactory.newVirtualThreadPerTaskExecutor("redisson-thread"));
   }
 
 }

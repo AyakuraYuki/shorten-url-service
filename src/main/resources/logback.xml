@@ -9,7 +9,7 @@
   <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <charset>UTF-8</charset>
-      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%5p|%50c{50}|:%6L|%40M|%msg%n</pattern>
+      <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS}|%5p|%40thread|%50c{50}|:%6L|%40M|%msg%n</pattern>
       <!--<pattern>{"date": "%d{yyyy-MM-dd HH:mm:ss.SSS}", "level": "%p", "logger": "%c", "file": "%F", "line_number": "%L", "method": "%M", "message": "%msg"}%n</pattern>-->
     </encoder>
   </appender>

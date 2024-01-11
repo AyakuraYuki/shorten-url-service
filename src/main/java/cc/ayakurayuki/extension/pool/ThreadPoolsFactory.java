@@ -2,6 +2,8 @@ package cc.ayakurayuki.extension.pool;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
@@ -55,6 +57,13 @@ public class ThreadPoolsFactory {
 
   public static ForkJoinPool newForkJoinPool(String name, int parallelism, UncaughtExceptionHandler handler, boolean asyncMode) {
     return new ForkJoinPool(parallelism, getForkJoinFactory(name), handler, asyncMode);
+  }
+
+  // ---------------------------------------------------------------------------------------------------- //
+
+  public static ExecutorService newVirtualThreadPerTaskExecutor(String name) {
+    ThreadFactory factory = Thread.ofVirtual().name(name, 0).factory();
+    return Executors.newThreadPerTaskExecutor(factory);
   }
 
   // ---------------------------------------------------------------------------------------------------- //

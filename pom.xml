@@ -19,10 +19,11 @@
     <!-- add-opens -->
     <argsLine>
       --add-opens=java.base/java.util=ALL-UNNAMED
+      --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
       --add-opens=java.base/java.lang=ALL-UNNAMED
       --add-opens=java.base/java.time=ALL-UNNAMED
     </argsLine>
-    <manifest.add-opens>java.base/java.util java.base/java.lang java.base/java.time</manifest.add-opens>
+    <manifest.add-opens>java.base/java.util java.base/java.util.concurrent java.base/java.lang java.base/java.time</manifest.add-opens>
   </properties>
 
   <dependencyManagement>
