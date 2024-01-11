@@ -16,11 +16,13 @@
 
     <springboot.version>3.2.1</springboot.version>
 
+    <!-- add-opens -->
     <argsLine>
       --add-opens=java.base/java.util=ALL-UNNAMED
       --add-opens=java.base/java.lang=ALL-UNNAMED
       --add-opens=java.base/java.time=ALL-UNNAMED
     </argsLine>
+    <manifest.add-opens>java.base/java.util java.base/java.lang java.base/java.time</manifest.add-opens>
   </properties>
 
   <dependencyManagement>
@@ -109,23 +111,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.3.0</version>
-        <executions>
-          <execution>
-            <id>default-jar</id>
-            <phase>package</phase>
-            <goals>
-              <goal>jar</goal>
-              <!--<goal>test-jar</goal>-->
-            </goals>
-            <configuration>
-              <archive>
-                <manifestEntries>
-                  <Add-Opens>java.base/java.util java.base/java.lang java.base/java.time</Add-Opens>
-                </manifestEntries>
-              </archive>
-            </configuration>
-          </execution>
-        </executions>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Add-Opens>${manifest.add-opens}</Add-Opens>
+            </manifestEntries>
+          </archive>
+        </configuration>
       </plugin>
 
       <plugin>
